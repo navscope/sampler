@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEDx: Paradox of Thoughts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#FF2B06',
+secondary: '#1A1A1A'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.countdown-item {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.speaker-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+.geometric-shape {
+position: absolute;
+border-radius: 50%;
+background: linear-gradient(45deg, rgba(255, 43, 6, 0.1), rgba(255, 43, 6, 0.3));
+animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-20px); }
+}
+</style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+<nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+<div class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-8">
+<div class="flex flex-col">
+<div class="text-2xl font-bold text-primary">TEDx: Paradox</div>
+<div class="text-sm text-gray-400">Ideas worth spreading</div>
+</div>
+<div class="hidden md:flex space-x-6">
+<a href="#about" class="text-gray-300 hover:text-primary">About</a>
+<a href="#speakers" class="text-gray-300 hover:text-primary">Speakers</a>
+<a href="#schedule" class="text-gray-300 hover:text-primary">Schedule</a>
+<a href="#gallery" class="text-gray-300 hover:text-primary">Gallery</a>
+<a href="#contact" class="text-gray-300 hover:text-primary">Contact</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-6 py-2 bg-primary/90 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-primary/80 transition-all whitespace-nowrap shadow-lg">
+Register Now
+</button>
+<div class="relative group">
+<button class="px-6 py-2 bg-white/10 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all whitespace-nowrap shadow-lg flex items-center space-x-2">
+<i class="ri-ticket-2-line"></i>
+<span>Book Passes</span>
+</button>
+<div class="absolute right-0 mt-2 w-72 bg-gray-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="p-4">
+<div class="mb-4 pb-4 border-b border-gray-700">
+<h3 class="text-lg font-semibold mb-2">Standard Pass</h3>
+<p class="text-gray-400 text-sm mb-2">Access to all sessions</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">₹999</span>
+<button class="px-4 py-1 bg-primary/90 text-white text-sm !rounded-full hover:bg-primary/80">Book Now</button>
+</div>
+</div>
+<div class="mb-4 pb-4 border-b border-gray-700">
+<h3 class="text-lg font-semibold mb-2">Premium Pass</h3>
+<p class="text-gray-400 text-sm mb-2">VIP seating + Lunch + Goodies</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">₹1999</span>
+<button class="px-4 py-1 bg-primary/90 text-white text-sm !rounded-full hover:bg-primary/80">Book Now</button>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-2">Student Pass</h3>
+<p class="text-gray-400 text-sm mb-2">Valid student ID required</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">₹499</span>
+<button class="px-4 py-1 bg-primary/90 text-white text-sm !rounded-full hover:bg-primary/80">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative min-h-screen pt-20 overflow-hidden" style="background-image: url('ted.png'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="flex flex-col items-start justify-center h-[80vh] max-w-3xl">
+<h1 class="text-6xl font-bold text-white mb-6">
+Paradox of Thoughts
+</h1>
+<p class="text-2xl text-white/90 mb-12">Exploring the Contradictions that Shape Our Reality</p>
+<div class="flex space-x-6 mb-12">
+<div class="countdown-item p-6 rounded-lg text-center">
+<div class="text-4xl font-bold text-white" id="days">00</div>
+<div class="text-sm text-white/80">Days</div>
+</div>
+<div class="countdown-item p-6 rounded-lg text-center">
+<div class="text-4xl font-bold text-white" id="hours">00</div>
+<div class="text-sm text-white/80">Hours</div>
+</div>
+<div class="countdown-item p-6 rounded-lg text-center">
+<div class="text-4xl font-bold text-white" id="minutes">00</div>
+<div class="text-sm text-white/80">Minutes</div>
+</div>
+<div class="countdown-item p-6 rounded-lg text-center">
+<div class="text-4xl font-bold text-white" id="seconds">00</div>
+<div class="text-sm text-white/80">Seconds</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<button class="px-8 py-3 bg-primary/90 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-primary/80 transition-all whitespace-nowrap text-lg shadow-lg">
+Register Now
+</button>
+<button class="px-8 py-3 bg-white/10 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all whitespace-nowrap text-lg shadow-lg">
+Learn More
+</button>
+</div>
+</div>
+</div>
+<div class="geometric-shape w-32 h-32 top-1/4 right-1/4"></div>
+<div class="geometric-shape w-24 h-24 bottom-1/4 left-1/4" style="animation-delay: -2s;"></div>
+<div class="geometric-shape w-40 h-40 top-1/3 left-1/3" style="animation-delay: -4s;"></div>
+</section>
+<section id="about" class="py-20 bg-gray-900 relative">
+<div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-br from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/f8bf63a8f424b95ffac740268f44b4a4.jpg" alt="About TEDx" class="rounded-lg shadow-xl">
+</div>
+<div>
+<h2 class="text-4xl font-bold mb-6">About TEDx: Paradox of Thoughts</h2>
+<p class="text-gray-600 mb-6">Join us for an extraordinary exploration of life's most intriguing contradictions. This independently organized TED event brings together philosophers, scientists, artists, and thought leaders to unravel the paradoxes that define our existence. From quantum mechanics to human consciousness, we'll dive deep into the beautiful complexity of opposing truths that somehow coexist.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-6 bg-gray-800 rounded-lg">
+<div class="text-3xl font-bold text-primary mb-2">1000+</div>
+<div class="text-gray-600">Attendees</div>
+</div>
+<div class="p-6 bg-gray-800 rounded-lg">
+<div class="text-3xl font-bold text-primary mb-2">20+</div>
+<div class="text-gray-600">Speakers</div>
+</div>
+<div class="p-6 bg-gray-800 rounded-lg">
+<div class="text-3xl font-bold text-primary mb-2">5+</div>
+<div class="text-gray-600">Years</div>
+</div>
+<div class="p-6 bg-gray-800 rounded-lg">
+<div class="text-3xl font-bold text-primary mb-2">50+</div>
+<div class="text-gray-600">Partners</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="speakers" class="py-20 bg-gray-800 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-bl from-primary/20 to-transparent transform skew-y-6"></div>
+<div class="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="absolute inset-0 bg-[url('https://public.readdy.ai/ai/img_res/ad6b120218b8597149e3d0b44d9eb0be.jpg')] opacity-10 bg-cover bg-center"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-2">Featured Speakers</h2>
+<div class="text-primary text-6xl font-bold font-['Helvetica'] text-center tracking-wider">TEDx CMRIT</div>
+</div>
+<div class="flex justify-center gap-4 mb-8">
+<button class="scroll-left px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none">
+<i class="ri-arrow-left-line"></i>
+</button>
+<button class="scroll-right px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none">
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+<div class="flex overflow-x-auto pb-8 gap-8 no-scrollbar px-4 md:px-0 snap-x snap-mandatory">
+<style>
+.no-scrollbar::-webkit-scrollbar {
+display: none;
+}
+.no-scrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+scroll-behavior: smooth;
+}
+.speaker-card {
+scroll-snap-align: start;
+}
+</style>
+<div class="speaker-card group relative w-80 flex-shrink-0">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+<img src="https://public.readdy.ai/ai/img_res/9d514253ae1ba800871592ef2623ca9f.jpg" alt="Speaker 1" class="w-full h-[28rem] object-cover rounded-xl">
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-black/50">
+<i class="ri-lightbulb-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">Dr. Rajesh Kumar</h3>
+<p class="text-gray-300">Quantum Physicist</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">"The Observer Effect: When Looking Changes Reality"</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="speaker-card group relative w-80 flex-shrink-0">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+<img src="https://public.readdy.ai/ai/img_res/5c0af22a6c49f4114fd39eecad6a51c3.jpg" alt="Speaker 2" class="w-full h-[28rem] object-cover rounded-xl">
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-black/50">
+<i class="ri-brain-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">Dr. Priya Sharma</h3>
+<p class="text-gray-300">Cognitive Neuroscientist</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">"The Paradox of Consciousness: When We Are and Are Not"</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="speaker-card group relative w-80 flex-shrink-0">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+<img src="https://public.readdy.ai/ai/img_res/367f352ff7eb85e90fc20e49eb3df320.jpg" alt="Speaker 3" class="w-full h-[28rem] object-cover rounded-xl">
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-black/50">
+<i class="ri-infinity-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">Dr. Arun Verma</h3>
+<p class="text-gray-300">Philosophical Mathematician</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">"The Infinity Paradox: When Everything is Nothing"</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="speaker-card group relative w-80 flex-shrink-0">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+<img src="https://public.readdy.ai/ai/img_res/1e3e378b92d0cd68e608fbc6544391d1.jpg" alt="Speaker 4" class="w-full h-[28rem] object-cover rounded-xl">
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-black/50">
+<i class="ri-code-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">Dr. Meera Iyer</h3>
+<p class="text-gray-300">AI Ethics Researcher</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">"The Ethics of Artificial Intelligence"</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="speaker-card group relative w-80 flex-shrink-0">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+<img src="https://public.readdy.ai/ai/img_res/3bcfa25b8db888f8a9370dd0182ff6c7.jpg" alt="Speaker 5" class="w-full h-[28rem] object-cover rounded-xl">
+<div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-black/50">
+<i class="ri-plant-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">Dr. Vikram Mehta</h3>
+<p class="text-gray-300">Climate Scientist</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">"Climate Change: The Human Paradox"</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="passes" class="py-20 bg-gray-900 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform skew-y-6"></div>
+<div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-bl from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="absolute inset-0 bg-[url('https://readdy.ai/api/search-image?query=abstract geometric patterns with red accent lighting, modern design elements, dark background&width=1920&height=1080&orientation=landscape')] opacity-5 bg-cover bg-center"></div><div class="container mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-2">Event Passes</h2>
+<div class="text-primary text-6xl font-bold font-['Helvetica'] text-left tracking-wider">TEDx CMRIT</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<div class="group">
+<div class="relative bg-gray-800 rounded-2xl p-8 border border-gray-700 transform group-hover:-translate-y-2 transition-all duration-300">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center border-2 border-primary">
+<i class="ri-user-line text-primary ri-lg"></i>
+</div>
+<div class="pt-8">
+<h3 class="text-2xl font-bold text-center mb-2">Standard Pass</h3>
+<div class="text-center mb-6">
+<span class="text-4xl font-bold text-primary">₹999</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Access to all sessions</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Conference materials</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Coffee breaks</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-primary/90 text-white !rounded-full hover:bg-primary/80 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="relative bg-gray-800 rounded-2xl p-8 border border-primary transform group-hover:-translate-y-2 transition-all duration-300">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center border-2 border-primary">
+<i class="ri-vip-crown-line text-white ri-lg"></i>
+</div>
+<div class="pt-8">
+<h3 class="text-2xl font-bold text-center mb-2">Premium Pass</h3>
+<div class="text-center mb-6">
+<span class="text-4xl font-bold text-primary">₹1999</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">VIP seating</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Lunch included</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Exclusive goodies</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Meet & Greet with speakers</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-primary text-white !rounded-full hover:bg-primary/80 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="relative bg-gray-800 rounded-2xl p-8 border border-gray-700 transform group-hover:-translate-y-2 transition-all duration-300">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center border-2 border-primary">
+<i class="ri-graduation-cap-line text-primary ri-lg"></i>
+</div>
+<div class="pt-8">
+<h3 class="text-2xl font-bold text-center mb-2">Student Pass</h3>
+<div class="text-center mb-6">
+<span class="text-4xl font-bold text-primary">₹499</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Access to all sessions</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Student ID required</span>
+</li>
+<li class="flex items-center space-x-3">
+<i class="ri-checkbox-circle-line text-primary"></i>
+<span class="text-gray-300">Certificate of participation</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-primary/90 text-white !rounded-full hover:bg-primary/80 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="schedule" class="py-20 bg-gray-900 relative">
+<div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-br from-primary/20 to-transparent transform skew-y-6"></div>
+<div class="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12">Event Schedule</h2>
+<div class="max-w-3xl mx-auto">
+<div class="relative">
+<div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700"></div>
+<div class="relative mb-12">
+<div class="flex items-center">
+<div class="flex-1 text-right pr-8">
+<h3 class="text-xl font-bold">Opening Ceremony</h3>
+<p class="text-gray-600">9:00 AM - 9:30 AM</p>
+<div class="mt-4">
+<img src="https://public.readdy.ai/ai/img_res/b190a211b5f5cdeffaf5a111cbaec5cc.jpg" alt="Opening Ceremony" class="rounded-lg ml-auto w-48 h-32 object-cover shadow-lg">
+</div>
+</div>
+<div class="w-4 h-4 bg-primary rounded-full z-10 flex items-center justify-center">
+<i class="ri-flag-2-line text-white text-xs"></i>
+</div>
+<div class="flex-1 pl-8">
+<p class="text-gray-500">Welcome address and introduction to TEDx CMRIT</p>
+<div class="flex items-center mt-4 space-x-4">
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-calendar-event-line"></i>
+<span>Add to Calendar</span>
+</button>
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-notification-line"></i>
+<span>Set Reminder</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative mb-12">
+<div class="flex items-center">
+<div class="flex-1 text-right pr-8">
+<h3 class="text-xl font-bold">Keynote Session</h3>
+<p class="text-gray-600">9:30 AM - 10:30 AM</p>
+<div class="mt-4">
+<img src="https://public.readdy.ai/ai/img_res/fc287b844277f9849fc5cac557b9acdf.jpg" alt="Keynote Session" class="rounded-lg ml-auto w-48 h-32 object-cover shadow-lg">
+</div>
+</div>
+<div class="w-4 h-4 bg-primary rounded-full z-10 flex items-center justify-center">
+<i class="ri-mic-line text-white text-xs"></i>
+</div>
+<div class="flex-1 pl-8">
+<p class="text-gray-500">Dr. Rajesh Kumar on "The Future of Ethical AI Development"</p>
+<div class="flex items-center mt-4 space-x-4">
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-calendar-event-line"></i>
+<span>Add to Calendar</span>
+</button>
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-live-line"></i>
+<span>Join Live Stream</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative mb-12">
+<div class="flex items-center">
+<div class="flex-1 text-right pr-8">
+<h3 class="text-xl font-bold">Interactive Session</h3>
+<p class="text-gray-600">10:45 AM - 11:45 AM</p>
+<div class="mt-4">
+<img src="https://public.readdy.ai/ai/img_res/89b3f5f030c71debe35a4a90bfa92e4d.jpg" alt="Interactive Session" class="rounded-lg ml-auto w-48 h-32 object-cover shadow-lg">
+</div>
+</div>
+<div class="w-4 h-4 bg-primary rounded-full z-10 flex items-center justify-center">
+<i class="ri-discuss-line text-white text-xs"></i>
+</div>
+<div class="flex-1 pl-8">
+<p class="text-gray-500">Priya Sharma on "Sustainable Innovation in Urban Spaces"</p>
+<div class="flex items-center mt-4 space-x-4">
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-calendar-event-line"></i>
+<span>Add to Calendar</span>
+</button>
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-questionnaire-line"></i>
+<span>Submit Questions</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="flex items-center">
+<div class="flex-1 text-right pr-8">
+<h3 class="text-xl font-bold">Closing Session</h3>
+<p class="text-gray-600">4:30 PM - 5:00 PM</p>
+<div class="mt-4">
+<img src="https://public.readdy.ai/ai/img_res/82cba1a63e84f397259ccc8a36fcd6ae.jpg" alt="Closing Session" class="rounded-lg ml-auto w-48 h-32 object-cover shadow-lg">
+</div>
+</div>
+<div class="w-4 h-4 bg-primary rounded-full z-10 flex items-center justify-center">
+<i class="ri-group-line text-white text-xs"></i>
+</div>
+<div class="flex-1 pl-8">
+<p class="text-gray-500">Closing remarks and networking session</p>
+<div class="flex items-center mt-4 space-x-4">
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-calendar-event-line"></i>
+<span>Add to Calendar</span>
+</button>
+<button class="px-4 py-2 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all text-sm flex items-center space-x-2">
+<i class="ri-user-add-line"></i>
+<span>Join Networking</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gallery" class="py-20 bg-gray-800 relative">
+<div class="absolute top-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12">Event Gallery</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative group overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/5cbf8f666d06838218ec1390b045be01.jpg" alt="Gallery 1" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<p class="text-white text-lg font-semibold">TEDx CMRIT 2024</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/fed49b7c83b89f795618101572a92142.jpg" alt="Gallery 2" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<p class="text-white text-lg font-semibold">Inspiring Talks</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/1ea358f4684ef43497348249937179b5.jpg" alt="Gallery 3" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<p class="text-white text-lg font-semibold">Networking Moments</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="team" class="py-20 bg-gray-800 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-bl from-primary/20 to-transparent transform skew-y-6"></div>
+<div class="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="absolute inset-0 bg-[url('https://public.readdy.ai/ai/img_res/5529dcca6e3be654841873d9fb2edca8.jpg')] opacity-5 bg-cover bg-center"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Meet Our Team</h2>
+<div class="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+<p class="text-gray-400 max-w-2xl mx-auto">The passionate individuals behind TEDx CMRIT who work tirelessly to bring ideas worth spreading to our community.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+<div class="team-member group">
+<div class="relative mb-6 overflow-hidden rounded-2xl">
+<div class="aspect-w-1 aspect-h-1">
+<img src="https://public.readdy.ai/ai/img_res/bbb0594d8c1feb8af054c3abeb554aaa.jpg" alt="Team Member" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="w-full">
+<div class="flex justify-center space-x-4 mb-4">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold mb-2">Arjun Patel</h3>
+<p class="text-primary mb-2">Event Director</p>
+<p class="text-sm text-gray-400">5+ years of event management experience</p>
+</div>
+</div>
+<div class="team-member group">
+<div class="relative mb-6 overflow-hidden rounded-2xl">
+<div class="aspect-w-1 aspect-h-1">
+<img src="https://public.readdy.ai/ai/img_res/526913a8a02808b992ad44fafe2a6e75.jpg" alt="Team Member" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="w-full">
+<div class="flex justify-center space-x-4 mb-4">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold mb-2">Sneha Reddy</h3>
+<p class="text-primary mb-2">Content Curator</p>
+<p class="text-sm text-gray-400">Content strategy specialist</p>
+</div>
+</div>
+<div class="team-member group">
+<div class="relative mb-6 overflow-hidden rounded-2xl">
+<div class="aspect-w-1 aspect-h-1">
+<img src="https://public.readdy.ai/ai/img_res/949a08d70f30ea24700dd4c33ef35717.jpg" alt="Team Member" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="w-full">
+<div class="flex justify-center space-x-4 mb-4">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold mb-2">Rahul Sharma</h3>
+<p class="text-primary mb-2">Technical Lead</p>
+<p class="text-sm text-gray-400">Audio-visual production expert</p>
+</div>
+</div>
+<div class="team-member group">
+<div class="relative mb-6 overflow-hidden rounded-2xl">
+<div class="aspect-w-1 aspect-h-1">
+<img src="https://public.readdy.ai/ai/img_res/06d1890be2bc992920bf8a45e82e9fbf.jpg" alt="Team Member" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div class="w-full">
+<div class="flex justify-center space-x-4 mb-4">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold mb-2">Priya Mehta</h3>
+<p class="text-primary mb-2">Marketing Head</p>
+<p class="text-sm text-gray-400">Digital marketing strategist</p>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center space-y-4">
+<button class="px-8 py-3 bg-primary/10 text-primary !rounded-full hover:bg-primary/20 transition-all group">
+<span class="flex items-center">
+Join Our Team
+<i class="ri-arrow-right-line ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+</span>
+</button>
+<button onclick="window.location.href='/team-members'" class="px-8 py-3 bg-gray-700/50 text-white !rounded-full hover:bg-gray-700/70 transition-all group">
+<span class="flex items-center">
+View All Team Members
+<i class="ri-team-line ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+</span>
+</button>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 bg-gray-900 relative">
+<div class="absolute top-0 right-0 w-full h-24 bg-gradient-to-tr from-primary/20 to-transparent transform skew-y-6"></div>
+<div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-bl from-primary/20 to-transparent transform -skew-y-6"></div>
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
+<p class="text-gray-600 mb-8">Have questions about TEDx CMRIT? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+<div class="space-y-4">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-map-pin-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold">Location</h3>
+<p class="text-gray-600">CMRIT Campus, Hyderabad, India</p>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-mail-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold">Email</h3>
+<p class="text-gray-600">tedx@cmrit.ac.in</p>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-phone-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold">Phone</h3>
+<p class="text-gray-600">+91 40 2345 6789</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+<textarea class="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-gray-100 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent h-32" placeholder="Your message"></textarea>
+</div>
+<button type="submit" class="w-full px-6 py-3 bg-primary/90 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-primary/80 transition-all whitespace-nowrap shadow-lg">
+Send Message
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-secondary py-12 text-white">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">TEDx CMRIT</h3>
+<p class="text-gray-400">Ideas Worth Spreading</p>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
+<li><a href="#speakers" class="text-gray-400 hover:text-white">Speakers</a></li>
+<li><a href="#schedule" class="text-gray-400 hover:text-white">Schedule</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Follow Us</h3>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all">
+<i class="ri-twitter-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Newsletter</h3>
+<form class="flex">
+<input type="email" placeholder="Your email" class="px-4 py-2 bg-white/10 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
+<button type="submit" class="px-4 py-2 bg-primary/90 text-white !rounded-full backdrop-blur-md border border-white/10 hover:bg-primary/80 shadow-lg">
+Subscribe
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+<p>&copy; 2025 TEDx: Paradox of Thoughts. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+document.querySelectorAll('.group button').forEach(button => {
+button.addEventListener('click', function(e) {
+if (e.target.textContent.includes('Book Now')) {
+const passType = e.target.closest('div').querySelector('h3').textContent;
+const price = e.target.closest('div').querySelector('.text-primary').textContent;
+const bookingModal = document.createElement('div');
+bookingModal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+bookingModal.innerHTML = `
+<div class="bg-gray-800 p-6 rounded-lg max-w-md w-full mx-4">
+<h3 class="text-xl font-bold mb-4">Book ${passType}</h3>
+<p class="text-gray-400 mb-4">Price: ${price}</p>
+<form class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-700 bg-gray-900 text-gray-100 rounded-lg" required>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-700 bg-gray-900 text-gray-100 rounded-lg" required>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2">Phone</label>
+<input type="tel" class="w-full px-4 py-2 border border-gray-700 bg-gray-900 text-gray-100 rounded-lg" required>
+</div>
+<div class="flex space-x-4">
+<button type="button" class="flex-1 px-4 py-2 bg-gray-700 text-white !rounded-full hover:bg-gray-600" onclick="this.closest('.fixed').remove()">Cancel</button>
+<button type="submit" class="flex-1 px-4 py-2 bg-primary text-white !rounded-full hover:bg-primary/80">Confirm Booking</button>
+</div>
+</form>
+</div>
+`;
+document.body.appendChild(bookingModal);
+bookingModal.querySelector('form').addEventListener('submit', function(e) {
+e.preventDefault();
+bookingModal.remove();
+const successModal = document.createElement('div');
+successModal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+successModal.innerHTML = `
+<div class="bg-gray-800 p-6 rounded-lg max-w-md w-full mx-4 text-center">
+<i class="ri-checkbox-circle-line text-green-500 text-5xl mb-4"></i>
+<h3 class="text-xl font-bold mb-2">Booking Confirmed!</h3>
+<p class="text-gray-400 mb-4">Thank you for booking. We'll send the details to your email shortly.</p>
+<button class="px-6 py-2 bg-primary text-white !rounded-full hover:bg-primary/80" onclick="this.closest('.fixed').remove()">Close</button>
+</div>
+`;
+document.body.appendChild(successModal);
+});
+}
+});
+});
+const countDownDate = new Date("March 15, 2025 09:00:00").getTime();
+const countdownTimer = setInterval(function() {
+const now = new Date().getTime();
+const distance = countDownDate - now;
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+if (distance < 0) {
+clearInterval(countdownTimer);
+document.getElementById("days").innerHTML = "00";
+document.getElementById("hours").innerHTML = "00";
+document.getElementById("minutes").innerHTML = "00";
+document.getElementById("seconds").innerHTML = "00";
+}
+}, 1000);
+document.addEventListener('DOMContentLoaded', function() {
+const nav = document.querySelector('nav');
+const scrollLeftBtn = document.querySelector('.scroll-left');
+const scrollRightBtn = document.querySelector('.scroll-right');
+const speakersContainer = document.querySelector('.no-scrollbar');
+if(scrollLeftBtn && scrollRightBtn && speakersContainer) {
+scrollLeftBtn.addEventListener('click', () => {
+speakersContainer.scrollBy({
+left: -320,
+behavior: 'smooth'
+});
+});
+scrollRightBtn.addEventListener('click', () => {
+speakersContainer.scrollBy({
+left: 320,
+behavior: 'smooth'
+});
+});
+}
+window.addEventListener('scroll', function() {
+if (window.scrollY > 100) {
+nav.classList.add('shadow-md');
+} else {
+nav.classList.remove('shadow-md');
+}
+});
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior: 'smooth'
+});
+});
+});
+});
+</script>
+</body>
+</html>
